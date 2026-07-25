@@ -356,3 +356,14 @@ async def delete_owner(callback: CallbackQuery):
 
     await callback.answer()
 
+@router.callback_query(F.data == "remove_name")
+async def delete_name(callback: CallbackQuery):
+
+    await remove_display_name(callback.from_user.id)
+
+    await callback.message.edit_text(
+        "✅ Display Name Removed.",
+        reply_markup=start_keyboard()
+    )
+
+    await callback.answer()
