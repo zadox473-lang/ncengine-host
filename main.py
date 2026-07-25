@@ -1,5 +1,6 @@
 import asyncio
 
+from handlers import main_router
 from aiogram import Bot, Dispatcher
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
@@ -56,9 +57,10 @@ async def main():
 
     dp.startup.register(on_startup)
     dp.shutdown.register(on_shutdown)
-
+    dp.include_router(main_router)
+    
     logger.info("Polling Started...")
-
+    
     await dp.start_polling(bot)
 
 
