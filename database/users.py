@@ -187,3 +187,18 @@ async def unban_user(user_id: int):
         """,
         user_id
     )
+async def remove_display_name(user_id: int):
+    """
+    Remove display name.
+    """
+
+    await execute(
+        """
+        UPDATE users
+        SET
+            display_name='User',
+            updated_at=NOW()
+        WHERE user_id=$1
+        """,
+        user_id
+    )
