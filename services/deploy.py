@@ -3,7 +3,7 @@ from pathlib import Path
 
 from aiogram import Bot
 
-from config import HOSTED_DIR
+from config import HOSTED_FOLDER
 
 
 TEMPLATE_FILE = Path("templates/hosted_script.py")
@@ -19,8 +19,7 @@ async def create_hosted_bot(
     Create hosted bot files.
     """
 
-    bot_folder = Path(HOSTED_DIR) / bot_username
-
+    bot_folder = HOSTED_FOLDER / bot_username
     bot_folder.mkdir(
         parents=True,
         exist_ok=True
